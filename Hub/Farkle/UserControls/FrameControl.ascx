@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FrameControl.ascx.cs" Inherits="Hub.Farkle.UserControls.FrameControl" %>
+<iframe class='floaty' src='<%=url%>' scrolling='no' style='display:block;'></iframe>";

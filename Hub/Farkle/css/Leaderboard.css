@@ -1,0 +1,34 @@
+﻿
+
+.floaty {
+    height: 165px;
+    opacity:1;
+    cursor:default;
+}
+
+.stats_table {
+    margin-top:5px;
+    width: 100%;
+    border: none;
+    border-collapse:collapse;
+    border-radius:10px;
+}
+
+.stats_table_cell_left {
+    border: 1px dotted black;
+    border-left:none;
+    padding: 5px;
+    width:50%;
+}
+
+.stats_table_cell_right {
+    border: 1px dotted black;
+    border-right: none;
+    padding: 5px;
+    padding-left: 7px;
+}
+
+button{
+    width:100%;
+    font-weight:bold;
+}

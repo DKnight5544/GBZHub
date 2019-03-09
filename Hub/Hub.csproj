@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,7 +71,35 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\default.css" />
+    <Content Include="css\menu.css" />
+    <Content Include="Farkle\css\DisplayFarkle.css" />
+    <Content Include="Farkle\css\Leaderboard.css" />
+    <Content Include="Farkle\NotAFarkleBot.aspx" />
+    <Content Include="Farkle\Home.aspx" />
+    <Content Include="Farkle\css\Home.css" />
+    <Content Include="Farkle\Leaderboard.aspx" />
+    <Content Include="Farkle\images\dice.jpg" />
+    <Content Include="Farkle\DisplayFarkle.aspx" />
+    <Content Include="Farkle\UserControls\FrameControl.ascx" />
+    <Content Include="Farkle\UserControls\StatsControl.ascx" />
+    <Content Include="images\BG04.jpg" />
+    <Content Include="images\btn05.png" />
     <Content Include="packages.config" />
+    <Content Include="Farkle\PlayFarkle.aspx" />
+    <Content Include="DWKDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DWKDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="AboutGBZ.pdf" />
+    <None Include="DWKDB.dbml.layout">
+      <DependentUpon>DWKDB.dbml</DependentUpon>
+    </None>
+    <Content Include="Farkle\FarkleAPI.pdf" />
+    <None Include="Properties\PublishProfiles\FarkleHub - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\gbz - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\gbz - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,10 +108,90 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Default.aspx" />
+    <Content Include="UserControls\MenuControl.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomClasses\DiceTosser.cs" />
+    <Compile Include="Farkle\CustomClasses\Move.cs" />
+    <Compile Include="Farkle\CustomClasses\PointsManager.cs" />
+    <Compile Include="CustomClasses\StringExtension.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DWKDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DWKDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\NotAFarkleBot.aspx.cs">
+      <DependentUpon>NotAFarkleBot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\NotAFarkleBot.aspx.designer.cs">
+      <DependentUpon>NotAFarkleBot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\Leaderboard.aspx.cs">
+      <DependentUpon>Leaderboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\Leaderboard.aspx.designer.cs">
+      <DependentUpon>Leaderboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\DisplayFarkle.aspx.cs">
+      <DependentUpon>DisplayFarkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\DisplayFarkle.aspx.designer.cs">
+      <DependentUpon>DisplayFarkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\PlayFarkle.aspx.cs">
+      <DependentUpon>PlayFarkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\PlayFarkle.aspx.designer.cs">
+      <DependentUpon>PlayFarkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\UserControls\FrameControl.ascx.cs">
+      <DependentUpon>FrameControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\UserControls\FrameControl.ascx.designer.cs">
+      <DependentUpon>FrameControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Farkle\UserControls\StatsControl.ascx.cs">
+      <DependentUpon>StatsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farkle\UserControls\StatsControl.ascx.designer.cs">
+      <DependentUpon>StatsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\MenuControl.ascx.cs">
+      <DependentUpon>MenuControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MenuControl.ascx.designer.cs">
+      <DependentUpon>MenuControl.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

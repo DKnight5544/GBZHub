@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DWKDB" Class="DWKDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ie0p1a01o5.database.windows.net;Initial Catalog=DWKDB;Persist Security Info=True;User ID=GBZ_User" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DWKDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="Farkle.GameView" Member="GameViews">
+    <Type Name="GameView" Id="ID1">
+      <Column Name="GameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BotId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MoveCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Moves" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="BotName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentInfo" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Placement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="Farkle.AddGame" Method="AddGame">
+    <Parameter Name="url" Type="System.String" DbType="VarChar(1000)" />
+    <ElementType Name="AddGameResult">
+      <Column Name="GameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BotId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="Farkle.EndGame" Method="EndGame">
+    <Parameter Name="GameId" Parameter="gameId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MoveCount" Parameter="moveCount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Moves" Parameter="moves" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Farkle.GetGame" Method="GetGame">
+    <Parameter Name="GameId" Parameter="gameId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="Farkle.GetLeaderboard" Method="GetLeaderboard">
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="GBZ.AddUpdateBot" Method="AddUpdateBot">
+    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="PaymentInfo" Parameter="paymentInfo" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="BotName" Parameter="botName" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
